@@ -27,7 +27,8 @@ var ref = database.ref();
 ref.on("value", function(snapshot) {
   let data=JSON.stringify(snapshot.val().sugar);
    console.log(snapshot.val().sugar);
-}, function (error) {
+   this.setState({resumeData: data});
+}.bind(this), function (error) {
    console.log("Error: " + error.code);
 });
 
@@ -40,19 +41,29 @@ class App extends Component {
     }
   }
 
+
+
   getResumeData(){
-    $.ajax({
-      url:'http://localhost:3000/resumeData.json',
-      dataType:'json',
-      cache: false,
-      success: function(data){
-        this.setState({resumeData: data});
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.log(err);
-        alert(err);
-      }
-    });
+    // $.ajax({
+    //   url:'http://localhost:3000/resumeData.json',
+    //   dataType:'json',
+    //   cache: false,
+    //   success: function(data){
+    //     console.log(data);
+    //     this.setState({resumeData: data});
+    //   }.bind(this),
+    //   error: function(xhr, status, err){
+    //     console.log(err);
+    //     alert(err);
+    //   }
+    // });
+    ref.on("value", function(snapshot) {
+      let data=snapshot.val().sugar;
+       console.log(snapshot.val().sugar);
+       this.setState({resumeData: data});
+    }.bind(this), function (error) {
+       console.log("Error: " + error.code);
+    }); 
   }
 
   componentDidMount(){
