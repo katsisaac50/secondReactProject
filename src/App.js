@@ -31,7 +31,6 @@ ref.on("value", function(snapshot) {
 }.bind(this), function (error) {
    console.log("Error: " + error.code);
 });
-
 class App extends Component {
   constructor(props){
     super(props);
