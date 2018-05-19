@@ -41,8 +41,6 @@ class App extends Component {
     }
   }
 
-
-
   getResumeData(){
     // $.ajax({
     //   url:'http://localhost:3000/resumeData.json',
