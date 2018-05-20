@@ -42,7 +42,7 @@ class App extends Component {
 
   getResumeData(){
     $.ajax({
-      url:'/resumeData.json',
+      url: `${process.env.PUBLIC_URL}/resumeData.json`,
       dataType:'json',
       cache: false,
       success: function(data){
@@ -50,8 +50,8 @@ class App extends Component {
         this.setState({resumeData: data});
       }.bind(this),
       error: function(xhr, status, err){
-        console.log(err);
-        alert(err);
+        console.error(err);
+        // alert(err);
       }
     });
     // ref.on("value", function(snapshot) {
